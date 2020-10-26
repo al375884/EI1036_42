@@ -23,6 +23,7 @@ include(dirname(__FILE__)."/includes/conector_BD.php");
 include(dirname(__FILE__)."/includes/table2html.php");
 
 include(dirname(__FILE__)."/includes/registrar_usuario.php");
+include(dirname(__FILE__)."/includes/registrar_producto.php");
 include(dirname(__FILE__)."/includes/autentificar_usuario.php");
 
 
@@ -45,17 +46,24 @@ switch ($action) {
         $central = "/partials/registro_usuario.php"; //formulario usuarios
         break;
     case "insertar_usuario":
-        $central = registrar_usuario("usuarios"); //tabla usuarios
+        //$central = registrar_usuario("usuarios"); //tabla usuarios
+        $table = "t_cliente";
+        $central = registrar_usuario($table); //tabla usuarios
         break;
     case "listar_productos":
-        $central = table2html("productos"); //tabla productos
+        //$central = table2html("productos"); //tabla productos
+        $table = "t_producto";
+        $central = table2html($table); //tabla productos
         break;
     case "registrar_producto":
         $central = "/partials/registro_producto.php"; //formulario producto
         break;
     case "insertar_producto":
-        $central = registrar_producto("productos"); //tabla productos
+        //$central = registrar_producto("productos"); //tabla productos
+        $table = "t_producto";
+        $central = registrar_producto($table); //tabla productos
         break;
+    // las tres opciones de cesta solo dependen de $_SESSION
     case "ver_cesta":
         $central = "<p>Todavia no puedo ver la cesta</p>"; //cesta en $_SESSION["cesta"]
         break;

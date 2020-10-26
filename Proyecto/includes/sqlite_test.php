@@ -3,7 +3,7 @@
 /* pdo debe ser sqlite en desarrollo */
 // preguntar
 
-$t_cliente  = 'clientes';
+$t_cliente  = 'usuarios';
 $t_producto = 'productos';
 $t_compra   = 'compras';
 
@@ -24,7 +24,7 @@ $pdo -> exec($query);
 
 #$a = ejecutarSQL($query, ["Jefe", "Supremo"]);
 
-if (0>$a) echo "No pude crear el usuario admin";
+#if (0>$a) echo "No pude crear el usuario admin";
 
 $query = "CREATE TABLE IF NOT EXISTS $t_producto (product_id SERIAL PRIMARY KEY, 
                                     name CHAR(50) NOT NULL,

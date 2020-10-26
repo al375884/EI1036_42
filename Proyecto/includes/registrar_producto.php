@@ -24,7 +24,7 @@ function registrar_producto($table)
         if (1>$a) echo "<h1> Inserción incorrecta </h1>";
         else echo "<h1> Producto registrado! </h1>";
 
-        #$_SESSION["usuario"] = "normal";
+        $_SESSION["usuario"] = "normal";
     
     } catch (PDOExeption $e) {
         echo ($e->getMessage());

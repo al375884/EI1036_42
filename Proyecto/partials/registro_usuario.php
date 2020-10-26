@@ -2,7 +2,6 @@
 	<h1>Datos de registro: </h1>
 	<form class="form_usuario" action="?action=insertar_usuario" method="POST">
 
-		<legend>Datos básicos</legend>
 		<label for="nombre">Nombre</label>
 		<br/>
 		<input type="text" name="name" class="item_requerid" size="10" maxlength="50"/>

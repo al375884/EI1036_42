@@ -1,5 +1,6 @@
 <?php
 
+// OPCIONAL
 function autentificar_usuario()
 {
     global $pdo;
@@ -11,5 +12,6 @@ function autentificar_usuario()
     $_SESSION["usuario"] = role
     */
 }
+
 
 ?>
