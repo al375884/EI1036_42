@@ -16,7 +16,9 @@ function handler($pdo,$table)
     $query = "INSERT INTO     $table (name, surname, address, city, zip_code, foto_file)
                     VALUES (?,?,?,?,?,?)";    
     echo $query;
+    global $pdo;
     try { 
+        if (!isset($pdo)) $pdo = new PDO("pgsql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,DB_PASSWORD);
         #$a=array($_REQUEST['userName'], $_REQUEST['email'],$_REQUEST['passwd'] );
         #print_r ($a);
         #$consult = $pdo->prepare($query);
