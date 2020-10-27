@@ -21,6 +21,7 @@ include(dirname(__FILE__)."/partials/menu.php");
 
 include(dirname(__FILE__)."/includes/conector_BD.php");
 include(dirname(__FILE__)."/includes/table2html.php");
+include(dirname(__FILE__)."/includes/listar_cesta.php");
 
 include(dirname(__FILE__)."/includes/registrar_usuario.php");
 include(dirname(__FILE__)."/includes/registrar_producto.php");
@@ -65,7 +66,9 @@ switch ($action) {
         break;
     // las tres opciones de cesta solo dependen de $_SESSION
     case "ver_cesta":
-        $central = "<p>Todavia no puedo ver la cesta</p>"; //cesta en $_SESSION["cesta"]
+        #$central = "<p>Todavia no puedo ver la cesta</p>"; //cesta en $_SESSION["cesta"]
+        $table = "t_compra";
+        $central = listar_cesta($table);
         break;
     case "encestar":
         $central = "<p>Todavía no puedo añadir a la cesta</p>"; //tabla compras

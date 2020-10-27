@@ -1,6 +1,6 @@
 <?php
 
-function table2html($table)
+function listar_cesta($table)
 {
     global $pdo;
 
@@ -13,14 +13,14 @@ function table2html($table)
         foreach($rows[0] as $key => $value) {
             echo "<th>", $key,"</th>";
         }
-        echo "<th>", "Añadir a cesta", "</th>";
+        echo "<th>", "Eliminar producto", "</th>";
         print "</thead>";
         foreach ($rows as $row) {
             print "<tr>";
             foreach ($row as $key => $val) {
                 echo "<td>", $val, "</td>";
             }
-            echo "<th>", "<form action=\"./includes/table2html.php\" method=\"POST\"> <input id=\"comprar\" type=\"submit\" value=\"Comprar\"></input> </form>", "</th>";
+            echo "<th>", "<form action=\"./includes/listar_cesta.php\" method=\"POST\"> <input id=\"eliminar\" type=\"submit\" value=\"Eliminar\"></input> </form>", "</th>";
             print "</tr>";
         }
         print "</table>";

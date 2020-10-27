@@ -33,7 +33,7 @@ $query = "CREATE TABLE IF NOT EXISTS $t_producto (product_id SERIAL PRIMARY KEY,
 
 $pdo -> exec($query);
 
-$query = "INSERT INTO $t_producto (name, price) VALUES (?, ?)";
+#$query = "INSERT INTO $t_producto (name, price) VALUES (?, ?)";
 
 #ejecutarSQL($query, ["Botella agua 33cl", 0.8]);
 #ejecutarSQL($query, ["Botellin cerveza", 1.0]);
@@ -45,5 +45,14 @@ $rows = $pdo->query($query);
 foreach($rows as $row){
 	print_r($row);
 }*/
+
+$query = "CREATE TABLE IF NOT EXISTS $t_compra (item_id SERIAL PRIMARY KEY, 
+                                    client_id VARCHAR(50) NOT NULL,
+                                    product_id VARCHAR(50) NOT NULL,
+                                    date_compra DATE )";
+
+$pdo -> exec($query);
+
+#$query = "INSERT INTO $t_producto (name, price) VALUES (?, ?)";
 
 ?>
