@@ -25,6 +25,8 @@ include(dirname(__FILE__)."/includes/listar_cesta.php");
 
 include(dirname(__FILE__)."/includes/registrar_usuario.php");
 include(dirname(__FILE__)."/includes/registrar_producto.php");
+include(dirname(__FILE__)."/includes/encestar_producto.php");
+include(dirname(__FILE__)."/includes/desencestar_producto.php");
 include(dirname(__FILE__)."/includes/autentificar_usuario.php");
 
 
@@ -71,8 +73,25 @@ switch ($action) {
         $central = listar_cesta($table);
         break;
     case "encestar":
-        $central = "<p>Todavía no puedo añadir a la cesta</p>"; //tabla compras
+        #$central = "<p>Todavía no puedo añadir a la cesta</p>"; //tabla compras
+        $table = "t_compra";
+        $cliente = "1";
+        $producto = "2";
+        $central = encestar_producto($table, $cliente, $producto);
+
+        $table = "t_producto";
+        $central = table2html($table);
         break;
+    case "desencestar_producto":
+        $table = "t_compra";
+        $item_id = "4";
+        $central = desencestar_producto($table, $item_id);
+
+        $table = "t_compra";
+        $central = listar_cesta($table);
+        break;
+
+    //No hacer este case
     case "realizar_compra":
         $central = "<p>Todavía no puedo añadir a la cesta</p>"; //cesta en $_SESSION["cesta"]
         break;

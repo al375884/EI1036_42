@@ -20,7 +20,8 @@ function table2html($table)
             foreach ($row as $key => $val) {
                 echo "<td>", $val, "</td>";
             }
-            echo "<th>", "<form action=\"./includes/table2html.php\" method=\"POST\"> <input id=\"comprar\" type=\"submit\" value=\"Comprar\"></input> </form>", "</th>";
+            echo "<th>", "<form action=\"?action=encestar&client_id=1&product_id=2\" method=\"POST\"> <input id=\"comprar\" type=\"submit\" value=\"Comprar\"></input> </form>", "</th>";
+            // <a href=\"?action=login\"></a>
             print "</tr>";
         }
         print "</table>";

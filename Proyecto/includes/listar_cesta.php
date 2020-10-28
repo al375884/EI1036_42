@@ -20,7 +20,7 @@ function listar_cesta($table)
             foreach ($row as $key => $val) {
                 echo "<td>", $val, "</td>";
             }
-            echo "<th>", "<form action=\"./includes/listar_cesta.php\" method=\"POST\"> <input id=\"eliminar\" type=\"submit\" value=\"Eliminar\"></input> </form>", "</th>";
+            echo "<th>", "<form action=\"?action=desencestar_producto&item_id=4\" method=\"POST\"> <input id=\"eliminar\" type=\"submit\" value=\"Eliminar\"></input> </form>", "</th>";
             print "</tr>";
         }
         print "</table>";

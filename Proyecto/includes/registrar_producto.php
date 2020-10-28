@@ -1,7 +1,5 @@
 <?php
 
-// no sabemos si hay que pasar pdo a la funcion como en la P1
-
 function registrar_producto($table)
 {
     global $pdo;
