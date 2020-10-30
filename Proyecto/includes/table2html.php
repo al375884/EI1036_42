@@ -17,8 +17,16 @@ function table2html($table)
         print "</thead>";
         foreach ($rows as $row) {
             print "<tr>";
+            $contador = 0;
             foreach ($row as $key => $val) {
-                echo "<td>", $val, "</td>";
+                $contador++;
+                if($contador == count($row)){
+                    echo "<td>", "<img src=".$val." id=\"imagen_prod\" alt=\"imagen_prod\" />", "</td>";
+                }
+                else{
+                    echo "<td>", $val, "</td>";
+                }
+                
             }
             echo "<th>", "<form action=\"?action=encestar&client_id=".$_SESSION["usuario_id"]."&product_id=".array_values($row)[0]."\" method=\"POST\"> <input id=\"comprar\" type=\"submit\" value=\"Añadir a la cesta\"></input> </form>", "</th>";
             // ".$_SESSION['usuario_id']."

@@ -13,7 +13,7 @@
 		<br/>
 		<label for="foto">Foto</label>
 		<br/>
-		<input type="text" name="foto_url" size="10" maxlength="25"/>
+		<input type="text" name="foto_url" size="10" maxlength="25" value="./img/"/>
 		<br/>
 		
 		<p><input type="submit" value="Enviar">
