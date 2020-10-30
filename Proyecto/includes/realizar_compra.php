@@ -12,7 +12,7 @@ function realizar_compra($table)
 
     $client_id = $_SESSION["usuario_id"];
     $product_id = $_REQUEST["item_id"];
-    $fecha = "2020-10-30";
+    $fecha = date('Y/m/d');
     $query = "INSERT INTO $table (client_id, product_id, date_compra)
                           VALUES (?,?,?)";
     try { 
