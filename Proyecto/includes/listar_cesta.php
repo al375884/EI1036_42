@@ -1,32 +1,22 @@
 <?php
 
-function listar_cesta($table)
+function listar_cesta()
 {
-    global $pdo;
-
-    $query = "SELECT * FROM  $table;";
-    
-    $rows = $pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
-
-    if (is_array($rows)) {/* Creamos un listado como una tabla HTML*/
-        print '<table><thead>';
-        foreach($rows[0] as $key => $value) {
-            echo "<th>", $key,"</th>";
+    echo "<ul>";
+    #$comprar = '?action=realizar_compra';
+    foreach($_SESSION["cesta"] as $k => $producto){
+        if(0<strlen($producto)){
+            $eliminar = '?action=desencestar_producto&item_id='.$producto;
+            $comprar = '?action=realizar_compra&item_id='.$producto;    
+            echo "<li>".$producto . "\t <a href= ".$eliminar .">Eliminar</a> \t <a href=" .$comprar .">Comprar</a>";
+            #echo "<li>".$producto . "<form action=".$eliminar."\" method=\"POST\"> <input id=\"eliminar\" type=\"submit\" value=\"Eliminar\"> </input> </form> <form action=".$comprar."\" method=\"POST\"> <input id=\"comprar\" type=\"submit\" value=\"Comprar\"></input> </form>";
         }
-        echo "<th>", "Eliminar producto", "</th>";
-        print "</thead>";
-        foreach ($rows as $row) {
-            print "<tr>";
-            foreach ($row as $key => $val) {
-                echo "<td>", $val, "</td>";
-            }
-            echo "<th>", "<form action=\"?action=desencestar_producto&item_id=4\" method=\"POST\"> <input id=\"eliminar\" type=\"submit\" value=\"Eliminar\"></input> </form>", "</th>";
-            print "</tr>";
+        else{
+            echo "Cesta vacía";
         }
-        print "</table>";
-    } 
-    else
-        print "<h1> No hay resultados </h1>"; 
+    }
+    #echo "<a href=" .$comprar .">Comprar</a>";
+    #echo "<form action=".$comprar."\" method=\"POST\"> <input id=\"comprar\" type=\"submit\" value=\"Comprar\"></input> </form>";
+    echo "</ul>";
 }
-
 ?>

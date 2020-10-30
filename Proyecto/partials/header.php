@@ -22,8 +22,8 @@
 
 <body>
 	<header>
-		<img src="./img/Logo-ACCE.gif" id="logo" alt="logo" />
-		<p id="eslogan">Asociación de Consumidores de Comercio Electrónico</p>
+		<img src="./img/logo_header.png" id="logo" alt="logo" />
+		<p id="eslogan">Bienvenido al VideoClub con los mejores precios</p>
 	</header>
 </body>
 </html>

@@ -5,11 +5,11 @@
 			<legend>Datos básicos</legend>
 			<label for="nombre">Nombre</label>
 			<br/>
-			<input type="text" name="name" class="item_requerid" size="20" maxlength="25"  placeholder="Miguel" />
+			<input type="text" name="name" class="item_requerid" size="20" maxlength="25"/>
 			<br/>
 			<label for="passwd">Contraseña</label>
 			<br/>
-			<input type="password" name="passwd"  class="item_requerid" size="20" maxlength="25" value="xxxx" />
+			<input type="password" name="passwd"  class="item_requerid" size="20" maxlength="25" />
 			<br/>
 		</fieldset>
 		<p>
