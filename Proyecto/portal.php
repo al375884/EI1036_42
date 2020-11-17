@@ -29,6 +29,7 @@ include(dirname(__FILE__)."/includes/registrar_producto.php");
 include(dirname(__FILE__)."/includes/realizar_compra.php");
 
 include(dirname(__FILE__)."/includes/autentificar_usuario.php");
+include(dirname(__FILE__)."/includes/upload_imagen.php");
 
 
 if (isset($_REQUEST['action'])) $action = $_REQUEST["action"];
@@ -94,6 +95,10 @@ switch ($action) {
     case "listar_compras":
         $table = "t_compra";
         $central = listar_compras($table);
+        break;
+    case "upload":
+        $central = upload_imagen();
+        $central = "/partials/registro_producto.php";
         break;
     default:
         $data["error"] = "Accion No permitida";
