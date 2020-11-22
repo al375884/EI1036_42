@@ -1,6 +1,6 @@
 <?php
 
-function realizar_compra($table)
+function realizar_compra($table, $productos)
 {
     global $pdo;
 
@@ -11,7 +11,8 @@ function realizar_compra($table)
     }
 
     $client_id = $_SESSION["usuario_id"];
-    $product_id = $_REQUEST["item_id"];
+    //$productos = $_REQUEST["productos"];
+    $listaProductos = explode(",", $productos);
     $fecha = date('Y/m/d');
     $query = "INSERT INTO $table (client_id, product_id, date_compra)
                           VALUES (?,?,?)";
@@ -23,11 +24,14 @@ function realizar_compra($table)
             $key = array_search($product_id, $_SESSION["cesta"]);
             unset($_SESSION["cesta"][$key]);
         }*/
-        $array=array($client_id, $product_id, $fecha);
-        $consult = $pdo->prepare($query);
-        $a=$consult->execute($array);
-        $key = array_search($product_id, $_SESSION["cesta"]);
-        unset($_SESSION["cesta"][$key]);
+        foreach($listaProductos as $product_id){
+            $array=array($client_id, $product_id, $fecha);
+            $consult = $pdo->prepare($query);
+            $a=$consult->execute($array);
+            /*$key = array_search($product_id, $_SESSION["cesta"]);
+            unset($_SESSION["cesta"][$key]);*/
+        }
+        
 
         if (1>$a) echo "<h1> Inserción incorrecta </h1>";
         else echo "<h1> Compra realizada! </h1>";

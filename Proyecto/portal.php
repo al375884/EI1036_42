@@ -36,16 +36,18 @@ if (isset($_REQUEST['action'])) $action = $_REQUEST["action"];
 else $action = "home";
 
 $central = "Partials/centro.php";
+echo "<script> listarCesta(); </script>";
 
 switch ($action) {
     case "home":
         $central = "/partials/centro.php";
         break;
     case "login": 
-        $central = "/partials/login.php"; //formulario login 
+        $central = "/partials/login.php"; //formulario login     
         break;
     case "do_login":
         $central = autentificar_usuario(); //fijar $_SESSION["usuario"]
+        $central = "/partials/centro.php"; 
         break;
     case "registrar_usuario":
         $central = "/partials/registro_usuario.php"; //formulario usuarios
@@ -77,7 +79,8 @@ switch ($action) {
         #$central = "<p>Todavía no puedo añadir a la cesta</p>"; //tabla compras
         $cliente = $_REQUEST["client_id"];
         $producto = $_REQUEST["product_id"];
-        array_push($_SESSION["cesta"], $producto);
+        echo "<script> anyadirProducto('". $producto ."'); guardarCesta(); </script>"; 
+        //array_push($_SESSION["cesta"], $producto);
         
         $table = "t_producto";
         $central = table2html($table);
@@ -90,7 +93,10 @@ switch ($action) {
         break;
     case "realizar_compra":
         $table = "t_compra";
-        $central = realizar_compra($table); //cesta en $_SESSION["cesta"]
+        $productos = $_GET["productos"];
+        //$productos = "<script> realizarCompra(); </script>";
+        //$central = listar_compras($table); 
+        $central = realizar_compra($table, $productos); //cesta en $_SESSION["cesta"]
         break;
     case "listar_compras":
         $table = "t_compra";

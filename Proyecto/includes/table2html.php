@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 function table2html($table)
 {
@@ -29,7 +29,8 @@ function table2html($table)
                 
             }
             echo "<th>", "<form action=\"?action=encestar&client_id=".$_SESSION["usuario_id"]."&product_id=".array_values($row)[0]."\" method=\"POST\"> <input id=\"comprar\" type=\"submit\" value=\"Añadir a la cesta\"></input> </form>", "</th>";
-            // ".$_SESSION['usuario_id']."
+            //echo "<th>", "<form> <input id=\"comprar\" type=\"submit\" value=\"Añadir a la cesta\" onclick=\"anyadirACesta(".array_values($row)[1].")></input> </form>", "</th>";
+            //onclick=\"anyadirACesta(".array_values($row)[1].")
             print "</tr>";
         }
         print "</table>";

@@ -14,7 +14,7 @@ function upload_imagen()
     }
 
     //Comprobar el tamaño
-    if($_FILES["foto_url"]["size"] > 500000){
+    if($_FILES["foto_url"]["size"] > 2000000){
         echo "Imagen demasido grande";
         $uploadOk = 0;
     }
@@ -26,15 +26,8 @@ function upload_imagen()
     }
 
     //Upload imagen
-    if($uploadOk == 0){
-        echo "La imagen no se ha podido subir";
-    }
-    else{
-        if(move_uploaded_file($_FILES["foto_url"]["tmp_name"], $target_file)){
-            echo "La imagen se ha subido";
-        }
-        else{
-            echo "Error al subir la imagen";
-        }
+    if($uploadOk == 1){
+        move_uploaded_file($_FILES["foto_url"]["tmp_name"], $target_file);
+        echo "La imagen se ha subido";
     }
 }
