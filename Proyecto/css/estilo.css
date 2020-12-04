@@ -203,3 +203,17 @@ section#blog {
     color: red;
     display: none;
 }
+
+.visor {
+    background-color: lightblue;
+    width: 1000px;
+    /*height: 300px;*/
+    overflow-x: scroll;
+    display:flex;
+}
+
+.item {
+    margin: 5px;
+    background-color: lightblue;
+    /*...*/
+}

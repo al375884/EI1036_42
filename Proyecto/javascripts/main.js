@@ -122,6 +122,7 @@ function anyadirProducto(producto){
     nodo.appendChild(saltoLinea);
 
     document.getElementById('list').appendChild(nodo);
+    guardarCesta();
 }
 
 function eliminarDeCesta(){
@@ -145,6 +146,94 @@ function borrarCesta(){
     localStorage.removeItem('cesta');
 }
 
-//document.onload = borrarLocalStorage();
+//Funciones JSON
 
+function datosProducto(){
+    fetch('https://localhost:3000/Proyecto/datos.php')
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .catch(err => console.log("Error al leer el JSON:", err));
+}
+
+function inyectarProducto(json){
+    for(var producto of json){
+        var id = producto.product_id;
+        var nombre = producto.name;
+        var precio = producto.price;
+        var urlImagen = producto.foto_url;
+
+        prod2ID[nombre] = id;
+
+        let pelicula = document.createElement('option');
+        pelicula.value = nombre;
+        document.getElementById('peliculas').appendChild(pelicula);
+
+        let div = document.createElement('div');
+        div.className = "item"; 
+        div.id = id;
+
+        let img = document.createElement('img');
+        //img.setAttribute(src, urlImagen);
+        img.src = urlImagen;
+        img.width = 270;
+        img.height = 380;
+        div.appendChild(img);
+
+        let pNombre = document.createElement('p');
+        pNombre.innerText = "Nombre: " + nombre;
+        let pPrecio = document.createElement('p');
+        pPrecio.innerText= "Precio: " + precio + "€";
+
+        let boton = document.createElement('button');
+        boton.textContent = 'Comprar';
+        boton.onclick = visorAnyadirProducto;
+        boton.classList.add('boton');
+
+        div.appendChild(pNombre);
+        div.appendChild(pPrecio);
+        div.appendChild(boton);
+
+        document.getElementById('visor').appendChild(div);
+    }
+}
+
+function visorAnyadirProducto(){
+    anyadirProducto(this.id);
+    guardarCesta();
+}
+
+var prod2ID = {};
+
+function scrollProducto(){
+    var nombreProducto = document.getElementById("pelicula").value;
+    var id = prod2ID[nombreProducto]
+    document.getElementById(id).scrollIntoView()
+}
+
+ 
+function fecthPrecio(){
+    var min = document.getElementById('min').value;
+    var max = document.getElementById('max').value;
+    let ruta = 'precios.php?min='+min+'&max='+max;
+
+    fetch(ruta)
+    .then(response => response.json())
+	//.then(json => console.log(json))
+	.then(data => filtrarPorPrecios(data))
+    .catch(err => console.log("Error al leer el JSON:", err));
+}
+
+function filtrarPorPrecios(json){
+    if (json != ""){
+        while(document.getElementById('visor').hasChildNodes()){
+            document.getElementById('visor').removeChild(document.getElementById('visor').lastChild);
+            document.getElementById('visor');
+        }
+        document.getElementById('peliculas').innerHTML = "";
+        inyectarProducto(json);
+    }
+    else{
+        alert('No existen productos entre esos precios');
+    }
+}
 

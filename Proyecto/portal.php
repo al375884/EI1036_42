@@ -32,6 +32,8 @@ include(dirname(__FILE__)."/includes/autentificar_usuario.php");
 include(dirname(__FILE__)."/includes/upload_imagen.php");
 
 
+
+
 if (isset($_REQUEST['action'])) $action = $_REQUEST["action"];
 else $action = "home";
 
@@ -59,8 +61,10 @@ switch ($action) {
         break;
     case "listar_productos":
         //$central = table2html("productos"); //tabla productos
-        $table = "t_producto";
-        $central = table2html($table); //tabla productos
+        //$table = "t_producto";
+        //$central = table2html($table); //tabla productos
+        //echo "<div id=\"visor\" class=\"visor\">", "</div>";
+        $central = "/partials/visorProductos.php";
         break;
     case "registrar_producto":
         $central = "/partials/registro_producto.php"; //formulario producto

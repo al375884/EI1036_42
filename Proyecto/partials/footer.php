@@ -10,6 +10,12 @@
 		<p class="der"> Visit us at: 12006 UJI </p>
 	</address>
 </footer>
+<script> fetch('datos.php')
+    .then(response => response.json())
+	//.then(json => console.log(json))
+	.then(data => inyectarProducto(data))
+    .catch(err => console.log("Error al leer el JSON:", err));
+	</script>
 </body>
 
 </html>
