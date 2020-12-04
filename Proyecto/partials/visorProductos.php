@@ -4,7 +4,7 @@
     <input type="number" step="0.01" name="min" id="min"/>
     <label for="maximo">Precio máximo:</label>
     <input type="number" step="0.01" name="max" id="max"/>
-    <button onclick=fecthPrecio()>Filtrar</button>
+    <button onclick=fetchPrecio()>Filtrar</button>
 
     <br/><br/>
     

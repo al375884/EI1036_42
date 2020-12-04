@@ -198,7 +198,7 @@ function inyectarProducto(json){
 }
 
 function visorAnyadirProducto(){
-    anyadirProducto(this.id);
+    anyadirProducto(this.parentNode.id);
     guardarCesta();
 }
 
@@ -211,7 +211,7 @@ function scrollProducto(){
 }
 
  
-function fecthPrecio(){
+function fetchPrecio(){
     var min = document.getElementById('min').value;
     var max = document.getElementById('max').value;
     let ruta = 'precios.php?min='+min+'&max='+max;
