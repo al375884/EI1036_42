@@ -16,6 +16,9 @@
 		<li>
 			<a href="?action=listar_compras">Compras</a>
 		</li>
+		<li>
+			<a href="?action=movil">Movil</a>
+		</li>
 		<li><a href="?action=login">Autentificar</a></li>
 		<li><a href="?action=registrar_usuario">Registrarme</a></li>
 		<?php 

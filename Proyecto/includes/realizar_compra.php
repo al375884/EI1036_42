@@ -13,6 +13,17 @@ function realizar_compra($table, $productos)
     $client_id = $_SESSION["usuario_id"];
     //$productos = $_REQUEST["productos"];
     $listaProductos = explode(",", $productos);
+    $listaProductosVacia = false;
+    foreach($listaProductos as $product_id){
+        if($product_id == ""){
+            $listaProductosVacia = true;
+            break;
+        }
+    }
+    if ($listaProductosVacia){
+        echo "<h1> NO hay productos en la cesta </h1>";
+        return;
+    }
     $fecha = date('Y/m/d');
     $query = "INSERT INTO $table (client_id, product_id, date_compra)
                           VALUES (?,?,?)";

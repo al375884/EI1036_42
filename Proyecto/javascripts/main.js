@@ -149,9 +149,10 @@ function borrarCesta(){
 //Funciones JSON
 
 function datosProducto(){
-    fetch('https://localhost:3000/Proyecto/datos.php')
+    fetch('datos.php')
     .then(response => response.json())
-    .then(json => console.log(json))
+	//.then(json => console.log(json))
+	.then(data => inyectarProducto(data))
     .catch(err => console.log("Error al leer el JSON:", err));
 }
 

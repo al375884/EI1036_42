@@ -110,6 +110,9 @@ switch ($action) {
         $central = upload_imagen();
         $central = "/partials/registro_producto.php";
         break;
+    case "movil":
+        $central = "/movil.php";
+        break;
     default:
         $data["error"] = "Accion No permitida";
         $central = "/partials/centro.php";
